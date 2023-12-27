@@ -1,0 +1,33 @@
+<p>template-binding works!</p>
+<button [disabled]="isDisabled">Buttton</button>
+<img [src]="srcValue" alt="">
+
+<h2>Atributo binding</h2>
+<p [attr.title]="name" [attr.aria-label]="name"> Dener troquatte</p>
+
+<h2>Class and style binding</h2>
+<p [class.background-red]="age >= 32" [class.background-blue]="age > 32">{{ name }}</p>
+
+<p [style.text-decoration]="isTextDecoration">{{ age }}</p>
+
+<h2>Event binding</h2>
+
+<button (click)="sum()">+</button>
+<button (click)="sub()">-</button>
+
+<h1>Two-way binding</h1>
+<input type="text" [(ngModel)]="name">
+<p>{{name}}</p>
+
+<hr>
+
+<h3>Diretivas de atributo</h3>
+<div [ngClass]="{ 'background-blue': age < 35, 'background-red': age > 35 }">Classes dinamicas</div>
+
+<div [ngStyle]="{
+    color: age > 35 ? 'green' : 'red'
+}">
+    Estilo dinâmico.
+</div>
+
+<app-template-variables></app-template-variables>

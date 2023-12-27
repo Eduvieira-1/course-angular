@@ -1,0 +1,84 @@
+<body>
+  <h1>Control flow</h1>
+
+  <h2>if</h2>
+  @if (isTrue) {
+    <p>test</p>
+  } @else {
+    <p>vulgo else</p>
+  }
+
+  <ng-container *ngIf="isTrue; else isFalse">
+    <p>test</p>
+  </ng-container>
+  <ng-template #isFalse></ng-template>
+
+  <h2>for</h2>
+  @if (loadingData$ | async; as data) {
+    <ul>
+      @for (item of data; track item) {
+        <li>{{ item }}</li>
+      }
+    </ul>
+  } @else {
+    <p>Carregando ....</p>
+  }
+
+  <!-- @for (item of loadingData$ | async; track item) {
+    <li>{{ item }}</li>
+  } -->
+
+  <ng-container *ngIf="loadingData$ | async as data; else loading">
+    <ul>
+      <ng-container *ngFor="let item of data; trackBy: trackByFn">
+        <li>{{ item }}</li>
+      </ng-container>
+    </ul>
+  </ng-container>
+  <ng-template #loading>
+    <p>Carregando</p>
+  </ng-template>
+
+  @for (
+    item of itens;
+    track item.name;
+    let i = $index;
+    let c = $count;
+    let f = $first;
+    let l = $last;
+    let e = $even;
+    let o = $odd
+  ) {
+    <p>{{ item.name }}</p>
+    <p>intex - {{ i }}</p>
+    <p>count - {{ c }}</p>
+    <p>first - {{ f }}</p>
+    <p>last - {{ l }}</p>
+    <p>even - {{ e }}</p>
+    <p>odd - {{ o }}</p>
+  }
+
+  <ng-container
+    *ngFor="
+      let item of itens;
+      let i = index;
+      let c = count;
+      let f = first;
+      let l = last;
+      let e = even;
+      let o = odd;
+      trackBy: trackByFn
+    "
+  >
+    <p>{{ item.name }}</p>
+    <p>intex - {{ i }}</p>
+    <p>count - {{ c }}</p>
+    <p>first - {{ f }}</p>
+    <p>last - {{ l }}</p>
+    <p>even - {{ e }}</p>
+    <p>odd - {{ o }}</p>
+  </ng-container>
+
+  <input #name type="text">
+  <button (click)="addNewName(name.value)">Add name</button>
+</body>
