@@ -1,4 +1,3 @@
-
 <!-- on
   idle: carregando todos os itens já por padrao
   timer: temporizador para tempo de aguardo para efetuar download dos elementos
@@ -9,15 +8,18 @@
   prefetch: pré carregar os dados
 
   ex: on timer(5s); on interaction(trigger); on hover
+
+  Deferrable Views, também conhecidos como @defer blocks, são uma nova funcionalidade
+  introduzida no Angular 17 que permite adiar o carregamento de determinadas partes de uma aplicação.
 -->
 <h2 #trigger>Deferrable views</h2>
-<button (click)="isTrue = true"> Add true</button>
+<button (click)="isTrue = true">Add true</button>
 
-@defer (when loadingData$ | async ) {
-  <app-new/>
-} @placeholder(minimum 5s) {
+@defer (when loadingData$ | async) {
+  <app-new />
+} @placeholder (minimum 5s) {
   <p>mostrar antes de carregar algo.</p>
-} @loading(after 150ms; minimum 5s) {
+} @loading (after 150ms; minimum 5s) {
   <p>Loading ....</p>
 } @error {
   <p>Loading failed:(</p>

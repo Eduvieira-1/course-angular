@@ -1,3 +1,4 @@
+import { SignalsComponent } from './components/signals/signals/signals.component';
 import { TemplateDeferrableViewsComponent } from './components/template/template-deferrable-views/template-deferrable-views.component';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,10 +17,12 @@ import { TemplateControlFlowComponent } from './components/template/template-con
     TemplateBindingComponent,
     TemplateControlFlowComponent,
     TemplateDeferrableViewsComponent,
+    SignalsComponent
   ],
   template: `
     <!-- <app-template-control-flow/> -->
-    <app-template-deferrable-views />
+    <!-- <app-template-deferrable-views /> -->
+    <app-signals/>
   `,
 })
 export class AppComponent {}
