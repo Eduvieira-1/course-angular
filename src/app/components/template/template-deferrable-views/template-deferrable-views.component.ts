@@ -1,3 +1,4 @@
+import { Observable, of, delay } from 'rxjs';
 import { NewComponent } from './../../new/new.component';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
@@ -11,4 +12,9 @@ import { Component } from '@angular/core';
 })
 export class TemplateDeferrableViewsComponent {
 
+  public isTrue = true;
+
+  public loadingData$: Observable<string[]> = of([
+    'item 1'
+  ]).pipe(delay(3000))
 }

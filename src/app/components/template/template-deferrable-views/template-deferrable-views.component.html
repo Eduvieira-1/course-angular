@@ -1,6 +1,19 @@
-<h2>Deferrable views</h2>
 
-@defer () {
+<!-- on
+  idle: carregando todos os itens já por padrao
+  timer: temporizador para tempo de aguardo para efetuar download dos elementos
+  viewport: ele só carrega o elemento quando o scroll chegar na posição que está os elementos dentro do @defer
+  interaction: interaçoes com algo onclick, onfocus e etc.
+  hover: Ao passar o mouse ele ja mostra o elemento.
+  immediate: carrega imediatamente
+  prefetch: pré carregar os dados
+
+  ex: on timer(5s); on interaction(trigger); on hover
+-->
+<h2 #trigger>Deferrable views</h2>
+<button (click)="isTrue = true"> Add true</button>
+
+@defer (when loadingData$ | async ) {
   <app-new/>
 } @placeholder {
   <p>mostrar antes de carregar algo.</p>
