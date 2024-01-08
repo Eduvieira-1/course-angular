@@ -1,3 +1,4 @@
+import { AngularPipesComponent } from './components/pipes/angular-pipes/angular-pipes.component';
 import { FatherOrMotherComponent } from './components/comunication-components/father-or-mother/father-or-mother.component';
 import { SignalsComponent } from './components/signals/signals/signals.component';
 import { TemplateDeferrableViewsComponent } from './components/template/template-deferrable-views/template-deferrable-views.component';
@@ -19,13 +20,15 @@ import { TemplateControlFlowComponent } from './components/template/template-con
     TemplateControlFlowComponent,
     TemplateDeferrableViewsComponent,
     SignalsComponent,
-    FatherOrMotherComponent
+    FatherOrMotherComponent,
+    AngularPipesComponent
   ],
   template: `
     <!-- <app-template-control-flow/> -->
     <!-- <app-template-deferrable-views /> -->
     <!-- <app-signals/> -->
-    <app-father-or-mother />
+    <!-- <app-father-or-mother /> -->
+    <app-angular-pipes />
   `,
 })
 export class AppComponent {}
