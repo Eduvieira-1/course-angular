@@ -1,3 +1,4 @@
+import { FatherOrMotherComponent } from './components/comunication-components/father-or-mother/father-or-mother.component';
 import { SignalsComponent } from './components/signals/signals/signals.component';
 import { TemplateDeferrableViewsComponent } from './components/template/template-deferrable-views/template-deferrable-views.component';
 import { Component } from '@angular/core';
@@ -17,12 +18,14 @@ import { TemplateControlFlowComponent } from './components/template/template-con
     TemplateBindingComponent,
     TemplateControlFlowComponent,
     TemplateDeferrableViewsComponent,
-    SignalsComponent
+    SignalsComponent,
+    FatherOrMotherComponent
   ],
   template: `
     <!-- <app-template-control-flow/> -->
     <!-- <app-template-deferrable-views /> -->
-    <app-signals/>
+    <!-- <app-signals/> -->
+    <app-father-or-mother />
   `,
 })
 export class AppComponent {}
