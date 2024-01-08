@@ -12,4 +12,5 @@ import { Component, signal } from '@angular/core';
 })
 export class FatherOrMotherComponent {
  public name = signal("Eduardo cesar")
+ public outputName = signal('Output: sem valor');
 }

@@ -1,3 +1,6 @@
 <p>father-or-mother works!</p>
 
 <app-input [inputName]="name()"/>
+<app-output (outputName)="outputName.set($event)" />
+
+<p>{{ outputName() }}</p>
