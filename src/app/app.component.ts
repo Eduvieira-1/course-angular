@@ -1,3 +1,5 @@
+import { TemplateDrivenFormsComponent } from './components/forms/template-driven-forms/template-driven-forms.component';
+import { ReactiveFormsComponent } from './components/forms/reactive-forms/reactive-forms.component';
 import { AngularPipesComponent } from './components/pipes/angular-pipes/angular-pipes.component';
 import { FatherOrMotherComponent } from './components/comunication-components/father-or-mother/father-or-mother.component';
 import { SignalsComponent } from './components/signals/signals/signals.component';
@@ -21,14 +23,18 @@ import { TemplateControlFlowComponent } from './components/template/template-con
     TemplateDeferrableViewsComponent,
     SignalsComponent,
     FatherOrMotherComponent,
-    AngularPipesComponent
+    AngularPipesComponent,
+    ReactiveFormsComponent,
+    TemplateDrivenFormsComponent
   ],
   template: `
     <!-- <app-template-control-flow/> -->
     <!-- <app-template-deferrable-views /> -->
     <!-- <app-signals/> -->
     <!-- <app-father-or-mother /> -->
-    <app-angular-pipes />
+    <!-- <app-angular-pipes /> -->
+    <app-reactive-forms/>
+    <app-template-driven-forms />
   `,
 })
 export class AppComponent {}
