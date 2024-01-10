@@ -1,1 +1,92 @@
 <p>template-driven-forms works!</p>
+
+<!-- Formulários Template-driven são uma maneira de criar e manipular formulários usando
+  apenas o template do componente. Eles são uma maneira fácil de começar a criar formulários,
+   mas podem se tornar complexos para formulários grandes ou complexos.
+
+Os formulários Template-driven são baseados no uso do atributo ngModel.
+ O atributo ngModel é usado para vincular um controle de formulário a uma propriedade do componente. -->
+
+<form #form="ngForm" (ngSubmit)="submitForm(form)">
+  <label>Nome:</label>
+  <input
+    type="text"
+    name="inputName"
+    #name="ngModel"
+    [ngModel]="name.value"
+    required
+  />
+
+  <hr />
+  <p>value: {{ name.value }}</p>
+  <p>valid: {{ name.valid }}</p>
+  <p>dirty: {{ name.dirty }}</p>
+  <p>touched: {{ name.touched }}</p>
+
+  <hr />
+
+  <label>Feminino:</label>
+  <input
+    type="radio"
+    value="Feminino"
+    name="radioSexo"
+    #sexo="ngModel"
+    [ngModel]="sexo.value"
+    required
+  />
+
+  <label>Masculino:</label>
+  <input
+    type="radio"
+    value="Masculino"
+    name="radioSexo"
+    #sexo="ngModel"
+    [ngModel]="sexo.value"
+    required
+  />
+
+  <hr />
+  <p>value: {{ sexo.value }}</p>
+  <p>valid: {{ sexo.valid }}</p>
+  <p>dirty: {{ sexo.dirty }}</p>
+  <p>touched: {{ sexo.touched }}</p>
+
+  <hr />
+  <label>Angular:</label>
+  <input
+    type="checkbox"
+    value="Angular"
+    name="checkboxAngular"
+    #teachAngular="ngModel"
+    [ngModel]="teachAngular.value"
+    required
+  />
+
+  <hr />
+  <p>value: {{ teachAngular.value }}</p>
+  <p>valid: {{ teachAngular.valid }}</p>
+  <p>dirty: {{ teachAngular.dirty }}</p>
+  <p>touched: {{ teachAngular.touched }}</p>
+
+  <hr />
+
+  <select name="selectComidas" #comidas="ngModel" ngModel>
+    <option value="">Selecione um alimento</option>
+    @for (item of listComidas(); track item) {
+      <option [ngValue]="item">{{ item.comida }}</option>
+    }
+  </select>
+
+  <hr />
+  <p>value: {{ comidas.value | json }}</p>
+  <p>comida: {{ comidas.value?.comida }}</p>
+  <p>preço: {{ comidas.value?.preco }}</p>
+  <p>valid: {{ comidas.valid }}</p>
+  <p>dirty: {{ comidas.dirty }}</p>
+  <p>touched: {{ comidas.touched }}</p>
+
+  <button [disabled]="!form.valid">send</button>
+</form>
+
+<p>Form valid: {{ form.valid }}</p>
+<p>Form valid: {{ form.value | json }}</p>
