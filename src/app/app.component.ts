@@ -34,7 +34,7 @@ import { TemplateControlFlowComponent } from './components/template/template-con
     <!-- <app-father-or-mother /> -->
     <!-- <app-angular-pipes /> -->
     <app-reactive-forms/>
-    <app-template-driven-forms />
+    <!-- <app-template-driven-forms /> -->
   `,
 })
 export class AppComponent {}
