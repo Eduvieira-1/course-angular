@@ -1,3 +1,4 @@
+import { LifeCycleComponent } from './components/life-cycle/life-cycle.component';
 import { HostElementsComponent } from './components/host-elements/host-elements.component';
 import { ContentComponent } from './components/content/content.component';
 import { TemplateDrivenFormsComponent } from './components/forms/template-driven-forms/template-driven-forms.component';
@@ -6,7 +7,7 @@ import { AngularPipesComponent } from './components/pipes/angular-pipes/angular-
 import { FatherOrMotherComponent } from './components/comunication-components/father-or-mother/father-or-mother.component';
 import { SignalsComponent } from './components/signals/signals/signals.component';
 import { TemplateDeferrableViewsComponent } from './components/template/template-deferrable-views/template-deferrable-views.component';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { NewComponent } from './components/new/new.component';
@@ -29,7 +30,8 @@ import { TemplateControlFlowComponent } from './components/template/template-con
     ReactiveFormsComponent,
     TemplateDrivenFormsComponent,
     ContentComponent,
-    HostElementsComponent
+    HostElementsComponent,
+    LifeCycleComponent
   ],
   template: `
     <!-- <app-template-control-flow/> -->
@@ -50,7 +52,18 @@ import { TemplateControlFlowComponent } from './components/template/template-con
         <p>footer</p>
       </footer>
     </app-content> -->
- <app-host-elements />
+ <!-- <app-host-elements /> -->
+ <app-life-cycle [myNumber]="number" />
+
   `,
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  public number = 1;
+
+  // E quando o component e criado e o proximo passo
+  ngOnInit(): void {
+    setInterval(() => {
+      this.number++;
+    }, 1000)
+  }
+}
