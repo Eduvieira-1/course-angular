@@ -1,3 +1,4 @@
+import { HostElementsComponent } from './components/host-elements/host-elements.component';
 import { ContentComponent } from './components/content/content.component';
 import { TemplateDrivenFormsComponent } from './components/forms/template-driven-forms/template-driven-forms.component';
 import { ReactiveFormsComponent } from './components/forms/reactive-forms/reactive-forms.component';
@@ -27,7 +28,8 @@ import { TemplateControlFlowComponent } from './components/template/template-con
     AngularPipesComponent,
     ReactiveFormsComponent,
     TemplateDrivenFormsComponent,
-    ContentComponent
+    ContentComponent,
+    HostElementsComponent
   ],
   template: `
     <!-- <app-template-control-flow/> -->
@@ -37,7 +39,7 @@ import { TemplateControlFlowComponent } from './components/template/template-con
     <!-- <app-angular-pipes /> -->
     <!-- <app-template-driven-forms /> -->
     <!-- <app-reactive-forms/> -->
-    <app-content>
+    <!-- <app-content>
       <header id="header">
         <p>header</p>
       </header>
@@ -47,7 +49,8 @@ import { TemplateControlFlowComponent } from './components/template/template-con
       <footer class="footer">
         <p>footer</p>
       </footer>
-    </app-content>
+    </app-content> -->
+ <app-host-elements />
   `,
 })
 export class AppComponent {}
