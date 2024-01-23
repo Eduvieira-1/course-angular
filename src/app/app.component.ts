@@ -53,12 +53,19 @@ import { TemplateControlFlowComponent } from './components/template/template-con
       </footer>
     </app-content> -->
  <!-- <app-host-elements /> -->
- <app-life-cycle [myNumber]="number" />
+ @if(boolean){
+   <app-life-cycle [myNumber]="number">
+    <p #text>Text</p>
+  </app-life-cycle>
+ }
+
+ <button (click)="boolean = !boolean">Destroy Component</button>
 
   `,
 })
 export class AppComponent implements OnInit {
   public number = 1;
+  public boolean = true;
 
   // E quando o component e criado e o proximo passo
   ngOnInit(): void {
