@@ -1,3 +1,4 @@
+import { ConsumeServiceComponent } from  './components/consume-service/consume-service.component';
 import { environment } from './../environments/environment';
 import { LifeCycleComponent } from './components/life-cycle/life-cycle.component';
 import { HostElementsComponent } from './components/host-elements/host-elements.component';
@@ -32,7 +33,8 @@ import { TemplateControlFlowComponent } from './components/template/template-con
     TemplateDrivenFormsComponent,
     ContentComponent,
     HostElementsComponent,
-    LifeCycleComponent
+    LifeCycleComponent,
+    ConsumeServiceComponent
   ],
   template: `
     <!-- <app-template-control-flow/> -->
@@ -62,6 +64,8 @@ import { TemplateControlFlowComponent } from './components/template/template-con
 
  <button (click)="boolean = !boolean">Destroy Component</button> -->
  <h1>Curso angular</h1>
+
+<app-consume-service />
 
   `,
 })
