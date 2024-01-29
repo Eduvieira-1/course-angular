@@ -14,22 +14,22 @@ export class NewComponent {
   #apiService = inject(ApiService)
 
   ngOnInit(): void {
-   console.log(this.#apiService.name());
+  //  console.log(this.#apiService.name());
 
-   this.#apiService.name$.subscribe({
-    next: (next) => console.log(next),
-    error: (error) => console.log(error),
-    complete: () => console.log("complete!"),
+  //  this.#apiService.name$.subscribe({
+  //   next: (next) => console.log(next),
+  //   error: (error) => console.log(error),
+  //   complete: () => console.log("complete!"),
 
-   })
+  //  })
 
-   this.#apiService.name$.next('Eduardo cesarrrrr')
+  //  this.#apiService.name$.next('Eduardo cesarrrrr')
 
-   this.#apiService.name.set('Duduuuuuu')
+  //  this.#apiService.name.set('Duduuuuuu')
 
-   setTimeout(() => {
-      console.log(this.#apiService.name());
-   },2000)
+  //  setTimeout(() => {
+  //     console.log(this.#apiService.name());
+  //  },2000)
   }
 
 }

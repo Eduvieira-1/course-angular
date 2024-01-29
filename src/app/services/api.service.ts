@@ -1,7 +1,12 @@
-import { Injectable, signal } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { environment } from './../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, signal, inject } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-
+interface ITask {
+  id: string;
+  title: string;
+}
 
 // service é uma classe que tem como proposito especifico oferecer funcionalidades ou dados entre partes da aplicação
 // e uma camada que a gente consegue deixar abstraida só para trabalhar com dados
@@ -15,5 +20,11 @@ export class ApiService {
 
   public name$ = new BehaviorSubject('Eduardo césar $')
 
-  constructor() { }
+  #http = inject(HttpClient)
+  #url = signal(environment.apiTasks);
+
+  public httpListTask$(): Observable<ITask[]> {
+    return this.#http.get<ITask[]>(this.#url());
+
+  }
 }

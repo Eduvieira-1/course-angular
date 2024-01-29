@@ -1,3 +1,12 @@
 <p>consume-service works!</p>
 
+
+<ul>
+    @for (item of getTask(); track item) {
+        <li>{{ item.id }} - {{ item.title}}</li>
+    }@empty {
+      <li>Não existe dados!</li>
+    }
+</ul>
+
 <app-new />

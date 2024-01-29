@@ -1,7 +1,7 @@
 import { NewComponent } from './../new/new.component';
 import { ApiService } from './../../services/api.service';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'app-consume-service',
@@ -14,19 +14,20 @@ import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/cor
 export class ConsumeServiceComponent implements OnInit {
   #apiService = inject(ApiService)
 
+  public getTask = signal<null | Array<{
+    id: string;
+    title: string;
+  }>>(null)
+
   ngOnInit(): void {
-   console.log(this.#apiService.name());
-
-   this.#apiService.name$.subscribe({
-    next: (next) => console.log(next),
-    error: (error) => console.log(error),
-    complete: () => console.log("complete!"),
-
-   })
-
-   setTimeout(() => {
-      console.log(this.#apiService.name());
-   },2000)
+    this.#apiService.httpListTask$().subscribe({
+      next: (next) => {
+        console.log(next);
+        this.getTask.set(next);
+      },
+      error: (error) => console.log(error),
+      complete: () => console.log('complete!'),
+    })
   }
 
 }
