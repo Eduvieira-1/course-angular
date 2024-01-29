@@ -14,20 +14,23 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 export class ConsumeServiceComponent implements OnInit {
   #apiService = inject(ApiService)
 
-  public getTask = signal<null | Array<{
-    id: string;
-    title: string;
-  }>>(null)
+  // public getTask = signal<null | Array<{
+  //   id: string;
+  //   title: string;
+  // }>>(null)
+
+  public getListTask = this.#apiService.getListTask;
 
   ngOnInit(): void {
-    this.#apiService.httpListTask$().subscribe({
-      next: (next) => {
-        console.log(next);
-        this.getTask.set(next);
-      },
-      error: (error) => console.log(error),
-      complete: () => console.log('complete!'),
-    })
+      this.#apiService.httpListTask$().subscribe()
+    // this.getTask$.subscribe({
+    //   next: (next) => {
+    //     console.log(next);
+    //     this.getTask.set(next);
+    //   },
+    //   error: (error) => console.log(error),
+    //   complete: () => console.log('complete!'),
+    // })
   }
 
 }
