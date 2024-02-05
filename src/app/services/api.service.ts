@@ -22,11 +22,27 @@ export class ApiService {
   #http = inject(HttpClient);
   #url = signal(environment.apiTasks);
 
+  //O # antes do nome sugere que seja uma variável privada de algum escopo, possivelmente de uma classe ou objeto.
   #setListTask = signal<ITask[] | null>(null);
-  public getListTask = this.#setListTask.asReadonly();
+  get getListTask() {
+    return this.#setListTask.asReadonly();
+  }
+
   public httpListTask$(): Observable<ITask[]> {
     return this.#http
       .get<ITask[]>(this.#url())
       .pipe(tap((res) => this.#setListTask.set(res)));
+  }
+
+
+  #setTaskId = signal<ITask | null>(null);
+  get getTaskId() {
+    return this.#setTaskId.asReadonly();
+  }
+
+  public httpTaskId$(id: string): Observable<ITask> {
+    return this.#http
+      .get<ITask>(`${this.#url()}/${id}`)
+      .pipe(tap((res) => this.#setTaskId.set(res)));
   }
 }

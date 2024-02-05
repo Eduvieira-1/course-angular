@@ -20,9 +20,11 @@ export class ConsumeServiceComponent implements OnInit {
   // }>>(null)
 
   public getListTask = this.#apiService.getListTask;
+  public getTaskId = this.#apiService.getTaskId;
 
   ngOnInit(): void {
-      this.#apiService.httpListTask$().subscribe()
+      this.#apiService.httpListTask$().subscribe();
+      this.#apiService.httpTaskId$('LkgBYNQWUjhtitz7oK3v ').subscribe();
     // this.getTask$.subscribe({
     //   next: (next) => {
     //     console.log(next);
