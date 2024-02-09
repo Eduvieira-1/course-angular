@@ -18,6 +18,10 @@
   <p>Get por ID: {{ data.id }} - {{ data.title }}</p>
 }
 
+<h3>Post create</h3>
+<input type="text" #createTitle placeholder="Add value">
+<button (click)="httpTaskCreate(createTitle.value)">Create</button>
+
 <!-- {{ getTask$ | async | json }}
 {{ getTask$ | async | json }}
 {{ getTask$ | async | json }} -->
