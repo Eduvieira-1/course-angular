@@ -20,11 +20,11 @@ export class ConsumeServiceComponent implements OnInit {
   //   title: string;
   // }>>(null)
 
-  public getListTask = this.#apiService.getListTask;
+  public getTaskList = this.#apiService.getTaskList;
   public getTaskId = this.#apiService.getTaskId;
 
   ngOnInit(): void {
-      this.#apiService.httpListTask$().subscribe();
+      this.#apiService.httpTaskList$().subscribe();
       this.#apiService.httpTaskId$('LkgBYNQWUjhtitz7oK3v ').subscribe();
     // this.getTask$.subscribe({
     //   next: (next) => {
@@ -39,7 +39,14 @@ export class ConsumeServiceComponent implements OnInit {
   public httpTaskCreate(title: string){
     return this.#apiService
     .httpTaskCreate$(title)
-    .pipe(concatMap(() => this.#apiService.httpListTask$()))
+    .pipe(concatMap(() => this.#apiService.httpTaskList$()))
+    .subscribe()
+  }
+
+  public httpTaskUpdate(id: string, title: string){
+    return this.#apiService
+    .httpTaskUpdate$(id, title)
+    .pipe(concatMap(() => this.#apiService.httpTaskList$()))
     .subscribe()
   }
 
