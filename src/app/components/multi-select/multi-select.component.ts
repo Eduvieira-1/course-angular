@@ -10,4 +10,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class MultiSelectComponent {
 
+  petals = new Array(12); // 12 petals for a flower
 }

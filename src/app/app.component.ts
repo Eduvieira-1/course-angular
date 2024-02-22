@@ -1,3 +1,5 @@
+import { MultiSelectComponent } from './components/multi-select/multi-select.component';
+import { TesteComponent } from './components/teste/teste.component';
 import { ConsumeServiceComponent } from  './components/consume-service/consume-service.component';
 import { environment } from './../environments/environment';
 import { LifeCycleComponent } from './components/life-cycle/life-cycle.component';
@@ -34,7 +36,9 @@ import { TemplateControlFlowComponent } from './components/template/template-con
     ContentComponent,
     HostElementsComponent,
     LifeCycleComponent,
-    ConsumeServiceComponent
+    ConsumeServiceComponent,
+    TesteComponent,
+    MultiSelectComponent
   ],
   template: `
     <!-- <app-template-control-flow/> -->
@@ -65,7 +69,9 @@ import { TemplateControlFlowComponent } from './components/template/template-con
  <button (click)="boolean = !boolean">Destroy Component</button> -->
  <h1>Curso angular</h1>
 
+ <!-- <app-multi-select /> -->
 <app-consume-service />
+<!-- <app-teste/> -->
 
   `,
 })

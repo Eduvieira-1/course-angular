@@ -1,7 +1,7 @@
 import { environment } from './../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, signal, inject } from '@angular/core';
-import { BehaviorSubject, Observable, shareReplay, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, shareReplay, tap, throwError } from 'rxjs';
 
 interface ITask {
   id: string;
@@ -23,26 +23,64 @@ export class ApiService {
   #url = signal(environment.apiTasks);
 
   //O # antes do nome sugere que seja uma variável privada de algum escopo, possivelmente de uma classe ou objeto.
-  #setListTask = signal<ITask[] | null>(null);
-  get getListTask() {
-    return this.#setListTask.asReadonly();
+
+  // GET ALL
+  #setTaskList = signal<ITask[] | null>(null);
+  get getTaskList() {
+    return this.#setTaskList.asReadonly();
   }
 
-  public httpListTask$(): Observable<ITask[]> {
+  public httpTaskList$(): Observable<ITask[]> {
+    const headers = new HttpHeaders().set('study-angular', 'dev');
+    const params = new HttpParams().set('page', '1')
+
+    this.#setTaskList.set(null)
     return this.#http
-      .get<ITask[]>(this.#url())
-      .pipe(tap((res) => this.#setListTask.set(res)));
+      .get<ITask[]>(this.#url(), { headers, params})
+      .pipe(tap((res) => this.#setTaskList.set(res)));
   }
 
-
+  //GET BY ID
   #setTaskId = signal<ITask | null>(null);
   get getTaskId() {
     return this.#setTaskId.asReadonly();
   }
 
+  #setTaskIdError = signal<ITask | null>(null);
+  get getTaskIdError() {
+    return this.#setTaskIdError.asReadonly();
+  }
+
   public httpTaskId$(id: string): Observable<ITask> {
     return this.#http
       .get<ITask>(`${this.#url()}/${id}`)
-      .pipe(tap((res) => this.#setTaskId.set(res)));
+      .pipe(
+        tap((res) => this.#setTaskId.set(res)),
+        catchError((e: HttpErrorResponse) => {
+          this.#setTaskIdError.set(e.error.message);
+          return throwError(() => e);
+        })
+        );
+  }
+
+  //CREATE
+  public httpTaskCreate$(title: string): Observable<ITask> {
+    return this.#http
+      .post<ITask>(this.#url(), { title })
+      .pipe(shareReplay())
+  }
+
+  //PATCH
+  public httpTaskUpdate$(id: string, title: string): Observable<ITask> {
+    return this.#http
+      .patch<ITask>(`${this.#url()}/${id}`, { title })
+      .pipe(shareReplay())
+  }
+
+  //DELETE
+  public httpTaskDelete$(id: string): Observable<void> {
+    return this.#http
+      .delete<void>(`${this.#url()}/${id}`, {})
+      .pipe(shareReplay())
   }
 }
