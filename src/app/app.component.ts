@@ -70,8 +70,9 @@ import { TemplateControlFlowComponent } from './components/template/template-con
  <h1>Curso angular</h1>
 
  <!-- <app-multi-select /> -->
-<app-consume-service />
+<!-- <app-consume-service /> -->
 <!-- <app-teste/> -->
+<router-outlet></router-outlet>
 
   `,
 })
